@@ -51,7 +51,7 @@ import gradio as gr
 from indextts.infer_v2 import IndexTTS2
 from tools.i18n.i18n import I18nAuto
 
-i18n = I18nAuto(language="Auto")
+i18n = I18nAuto(language="zh_CN")
 MODE = 'local'
 tts = IndexTTS2(model_dir=cmd_args.model_dir,
                 cfg_path=os.path.join(cmd_args.model_dir, "config.yaml"),
@@ -172,10 +172,10 @@ def create_warning_message(warning_text):
 def create_experimental_warning_message():
     return create_warning_message(i18n('提示：此功能为实验版，结果尚不稳定，我们正在持续优化中。'))
 
-with gr.Blocks(title="IndexTTS Demo") as demo:
+with gr.Blocks(title="IndexTTS（文本转语音）") as demo:
     mutex = threading.Lock()
     gr.HTML('''
-    <h2><center>IndexTTS2: A Breakthrough in Emotionally Expressive and Duration-Controlled Auto-Regressive Zero-Shot Text-to-Speech</h2>
+    <h2><center>IndexTTS2：情感表达和时长控制的自回归零样本文本转语音的突破</h2>
 <p align="center">
 <a href='https://arxiv.org/abs/2506.21619'><img src='https://img.shields.io/badge/ArXiv-2506.21619-red'></a>
 </p>
@@ -251,16 +251,16 @@ with gr.Blocks(title="IndexTTS Demo") as demo:
                 with gr.Column(scale=1):
                     gr.Markdown(f"**{i18n('GPT2 采样设置')}** _{i18n('参数会影响音频多样性和生成速度详见')} [Generation strategies](https://huggingface.co/docs/transformers/main/en/generation_strategies)._")
                     with gr.Row():
-                        do_sample = gr.Checkbox(label="do_sample", value=True, info=i18n("是否进行采样"))
-                        temperature = gr.Slider(label="temperature", minimum=0.1, maximum=2.0, value=0.8, step=0.1)
+                        do_sample = gr.Checkbox(label=i18n("do_sample"), value=True, info=i18n("是否进行采样"))
+                        temperature = gr.Slider(label=i18n("temperature"), minimum=0.1, maximum=2.0, value=0.8, step=0.1)
                     with gr.Row():
-                        top_p = gr.Slider(label="top_p", minimum=0.0, maximum=1.0, value=0.8, step=0.01)
-                        top_k = gr.Slider(label="top_k", minimum=0, maximum=100, value=30, step=1)
-                        num_beams = gr.Slider(label="num_beams", value=3, minimum=1, maximum=10, step=1)
+                        top_p = gr.Slider(label=i18n("top_p"), minimum=0.0, maximum=1.0, value=0.8, step=0.01)
+                        top_k = gr.Slider(label=i18n("top_k"), minimum=0, maximum=100, value=30, step=1)
+                        num_beams = gr.Slider(label=i18n("num_beams"), value=3, minimum=1, maximum=10, step=1)
                     with gr.Row():
-                        repetition_penalty = gr.Number(label="repetition_penalty", precision=None, value=10.0, minimum=0.1, maximum=20.0, step=0.1)
-                        length_penalty = gr.Number(label="length_penalty", precision=None, value=0.0, minimum=-2.0, maximum=2.0, step=0.1)
-                    max_mel_tokens = gr.Slider(label="max_mel_tokens", value=1500, minimum=50, maximum=tts.cfg.gpt.max_mel_tokens, step=10, info=i18n("生成Token最大数量，过小导致音频被截断"), key="max_mel_tokens")
+                        repetition_penalty = gr.Number(label=i18n("repetition_penalty"), precision=None, value=10.0, minimum=0.1, maximum=20.0, step=0.1)
+                        length_penalty = gr.Number(label=i18n("length_penalty"), precision=None, value=0.0, minimum=-2.0, maximum=2.0, step=0.1)
+                    max_mel_tokens = gr.Slider(label=i18n("max_mel_tokens"), value=1500, minimum=50, maximum=tts.cfg.gpt.max_mel_tokens, step=10, info=i18n("生成Token最大数量，过小导致音频被截断"), key="max_mel_tokens")
                     # with gr.Row():
                     #     typical_sampling = gr.Checkbox(label="typical_sampling", value=False, info="不建议使用")
                     #     typical_mass = gr.Slider(label="typical_mass", value=0.9, minimum=0.0, maximum=1.0, step=0.1)

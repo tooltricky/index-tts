@@ -43,5 +43,13 @@
   "与音色参考音频相同": "与音色参考音频相同",
   "情感随机采样": "情感随机采样",
   "显示实验功能": "显示实验功能",
-  "提示：此功能为实验版，结果尚不稳定，我们正在持续优化中。": "提示：此功能为实验版，结果尚不稳定，我们正在持续优化中。"
+  "提示：此功能为实验版，结果尚不稳定，我们正在持续优化中。": "提示：此功能为实验版，结果尚不稳定，我们正在持续优化中。",
+  "do_sample": "启用采样 (do_sample)",
+  "temperature": "温度系数 (temperature)",
+  "top_p": "核采样阈值 (top_p)",
+  "top_k": "top_k采样数 (top_k)",
+  "num_beams": "束搜索数量 (num_beams)",
+  "repetition_penalty": "重复惩罚 (repetition_penalty)",
+  "length_penalty": "长度惩罚 (length_penalty)",
+  "max_mel_tokens": "最大梅尔Token数 (max_mel_tokens)"
 }
